@@ -55,6 +55,50 @@ class SluggerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test for whitespaces removal.
+     */
+    public function testNoWhitespaces()
+    {
+        $this->assertTrue(strpos($this->getSlugger()->slugify("test white spaces"), ' ') === false);
+    }
+
+    /**
+     * Test for invalid characters removal.
+     */
+    public function testInvalidCharacterRemoval()
+    {
+        $strings = array(
+            'à', 'á', 'â', 'ã', 'å', 'À', 'Á', 'Â', 'Ã', 'Å',
+            'æ', 'Æ', 'ä', 'Ä',
+            '&amp;', '&',
+            'ç', 'Ç', '©',
+            '∂',
+            'è', 'é', 'ê', 'ë', 'È', 'É', 'Ê', 'Ë', '€',
+            'ì', 'í', 'î', 'ï', 'Ì', 'Í', 'Î', 'Ï',
+            'ñ', 'Ñ',
+            'ò', 'ó', 'ô', 'õ', 'ø', 'Ò', 'Ó', 'Ô', 'Õ', 'Ø',
+            'œ', 'Œ', 'ö', 'Ö',
+            '®',
+            '$',
+            'ß',
+            'ù', 'ú', 'û', 'µ', 'Ù', 'Ú', 'Û',
+            'ü', 'Ü',
+            'ÿ', 'Ÿ', '¥',
+            '™',
+            '∏', 'π', 'Π',
+            "'", "`", '"'
+        );
+
+        foreach ($strings as $string) {
+            $slug = $this->getSlugger()->slugify($string);
+            $this->assertTrue(
+                preg_match('/[^a-z0-9\s-]/', $slug) === 0,
+                sprintf("testInvalidCharacterRemoval failed for '%s' from '%s'", $slug, $string)
+            );
+        }
+    }
+
+    /**
      * @return \Gibilogic\SluggerBundle\Service\Slugger
      */
     protected function getSlugger()
