@@ -1,11 +1,11 @@
 # GiBiLogic SluggerBundle
 
-A small bundle containing a ready-to-use slugger service for Symfony 2.
+A small bundle that contains a ready-to-use slugger service for Symfony 2.
 
 The slugify operation:
 
 * Removes new lines (`\n`) and/or carriage returns (`\r`)
-* Replaces extended characters (`æ` and `Ñ`, for example) into their "basic" versions (`ae` and `n`, for example)
+* Replaces extended characters ("æ" and "Ñ", for example) into their "plain" versions ("ae" and "n", for example)
 * Converts the entire string in lower case (by using the `mb_strtolower` function)
 * Replaces every non-letter non-number character with a separator (defaults to `-`)
 
