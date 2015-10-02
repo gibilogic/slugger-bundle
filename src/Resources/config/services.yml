@@ -1,0 +1,3 @@
+services:
+    gibilogic.slugger:
+        class: Gibilogic\SluggerBundle\Service\Slugger
