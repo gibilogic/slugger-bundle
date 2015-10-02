@@ -1,4 +1,4 @@
-# Gibilogic SluggerBundle
+# GiBiLogic SluggerBundle
 
 A small bundle containing a ready-to-use slugger service for Symfony 2.
 
