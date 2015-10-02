@@ -1,0 +1,28 @@
+{
+    "name": "gibilogic/slugger-bundle",
+    "type": "symfony-bundle",
+    "description": "GiBiLogic Slugger Bundle",
+    "keywords": [ "slug", "slugger", "slugify" ],
+    "homepage": "http://www.gibilogic.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name":     "GiBilogic Snc",
+            "homepage": "http://www.gibilogic.com",
+            "email":    "info@gibilogic.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": ">=2.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8"
+    },
+    "autoload": {
+        "psr-4": { "Gibilogic\\SluggerBundle\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Gibilogic\\SluggerBundle\\Tests\\": "tests/" }
+    }
+}
