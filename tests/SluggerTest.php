@@ -23,6 +23,14 @@ class SluggerTest extends \PHPUnit_Framework_TestCase
     private static $slugger = null;
 
     /**
+     * Test for invalid (non url-friendly) separator.
+     */
+    public function testInvalidSeparator()
+    {
+        $this->assertEquals('test-separator', $this->getSlugger()->slugify('test separator', '/'));
+    }
+
+    /**
      * Test for lowercase conversion.
      */
     public function testLowercase()

@@ -14,6 +14,8 @@ namespace Gibilogic\SluggerBundle\Service;
  */
 class Slugger
 {
+    const DEFAULT_SEPARATOR = '-';
+
     /**
      * Returns the slugified version of the string.
      *
@@ -21,7 +23,7 @@ class Slugger
      * @param string $separator
      * @return string
      */
-    public function slugify($string, $separator = '-')
+    public function slugify($string, $separator = self::DEFAULT_SEPARATOR)
     {
         if (empty($string)) {
             return null;
@@ -33,7 +35,7 @@ class Slugger
                     $this->removeNewLines($string)
                 )
             ),
-            $separator
+            $this->sanitizeSeparator($separator)
         );
     }
 
@@ -98,5 +100,22 @@ class Slugger
     protected function replaceInvalidCharacters($string, $separator)
     {
         return preg_replace('#(' . $separator . '+)#', $separator, preg_replace('#[\s]+#', $separator, rtrim(trim(preg_replace('#[^a-z0-9\s]#', ' ', $string)))));
+    }
+
+    /**
+     * @param string $separator
+     * @return string
+     */
+    protected function sanitizeSeparator($separator)
+    {
+        if ($separator == self::DEFAULT_SEPARATOR) {
+            return $separator;
+        }
+
+        if ($separator == rawurlencode($separator)) {
+            return $separator;
+        }
+
+        return self::DEFAULT_SEPARATOR;
     }
 }
