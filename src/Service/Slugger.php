@@ -43,17 +43,12 @@ class Slugger
      * @param string $string
      * @return string
      */
-    protected function removeNewLines($string)
+    public function replaceExtendedCharacters($string)
     {
-        return (string)str_replace(array("\r", "\n"), '', $string);
-    }
+        if (empty($string)) {
+            return null;
+        }
 
-    /**
-     * @param string $string
-     * @return string
-     */
-    protected function replaceExtendedCharacters($string)
-    {
         $replacements = array(
             'a' => array('à', 'á', 'â', 'ã', 'å', 'À', 'Á', 'Â', 'Ã', 'Å'),
             'ae' => array('æ', 'Æ', 'ä', 'Ä'),
@@ -81,6 +76,15 @@ class Slugger
         }
 
         return $string;
+    }
+
+    /**
+     * @param string $string
+     * @return string
+     */
+    protected function removeNewLines($string)
+    {
+        return (string)str_replace(array("\r", "\n"), '', $string);
     }
 
     /**
