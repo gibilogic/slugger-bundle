@@ -23,6 +23,14 @@ Or, if you are using `composer.phar`, use the console command:
 php composer.phar require gibilogic/slugger-bundle
 ```
 
+Add the bundle to your `AppKernel.php`:
+
+```php
+...
+new Gibilogic\SluggerBundle\GibilogicSluggerBundle(),
+...
+```
+
 ## Usage
 
 Inside your Symfony 2 application, get the slugger service:
