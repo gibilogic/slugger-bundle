@@ -68,7 +68,7 @@ class Slugger
             'y' => array('ÿ', 'Ÿ', '¥'),
             'tm' => array('™'),
             'pi' => array('∏', 'π', 'Π'),
-            ' ' => array("'", "`", "’", "°", "“", "”"),
+            ' ' => array("'", "`", "’", "°", "“", "”", "–"),
         );
 
         foreach ($replacements as $output => $input) {
